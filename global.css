@@ -52,6 +52,15 @@ body {
 /* ---------- Lab 1: The Film Strip ---------- */
 /* YOUR CODE: Lab 1, the window and the spin */
 
+.coin-window{
+  height: 64px;
+  width:64px;
+  border: 1px red dashed;
+  overflow: hidden;
+}
+.coin-window img{
+  transform: translateX(-1.25%);
+}
 
 /* ---------- Lab 2: Byte Walks ---------- */
 .robot-row {
@@ -70,6 +79,18 @@ body {
 }
 
 /* YOUR CODE: Lab 2, the windows and four directions */
+@keyframes spin {
+from{
+  transform: translateX(0);
+}
+to {
+  transform: translateX(-100%);
+}
+}
+
+.coin-window img{
+animation: 0.8s steps(4) infinite spin;
+}
 
 
 /* ---------- Lab 3: The Stage ---------- */
@@ -81,6 +102,79 @@ body {
 }
 
 /* YOUR CODE: Lab 3, a window on the stage, then walk across */
+.robot-window{
+  width: 128px;
+  height:128px;
+  overflow:hidden;
+}
 
+.robot-sheet{ 
+  transform: translate(0,0);
+}
+.walk-down.hover img, 
+.walk-down.focus-visible img{
+  animation: .8s steps(8) infinite walk-down;
+}
+.walk-down:active img{
+  animation: .4s steps(8) infinite walk-down;
+}
+
+.walk-left.hover img,
+.walk-left.focus-visible img{
+  animation: .8s steps(8) infinite walk-left;
+}
+.walk-left:active img{
+   animation: .4s steps(8) infinite walk-left;
+}
+
+
+.walk-right.hover img,
+.walk-right.focus-visible img{
+  animation: .8s steps(8) infinite walk-right;
+}
+.walk-right:active img{
+   animation: .4s steps(8) infinite walk-right;
+}
+.walk-up.hover img,
+.walk-up.focus-visible img{
+   animation: .8s steps(8) infinite walk-right;
+}
+.walk-up:active img{
+   animation: .4s steps(8) infinite walk-up;
+}
+
+
+@keyframes walk-down{
+  from {transition: translate(0,0);}
+
+  to {transform: translate(-100%,0);}
+}
+@keyframes walk-left {
+  from { transform: translate(0,-25%);
+
+  to {transform: translate(-100%,-25%);}}
+}
+@keyframes walk-right {
+  from {transform: translate(0,-50%);}
+
+  to {transform: translate(-100%,-50%);}
+}
+@keyframes walk-up {
+  from{ transform: translate(0,-75%);}
+
+  to{transform: translate(-100%,-75%);}
+}
+.robot-window img{
+  animation: 6x steps(8) infinite;
+}
+.robot-window .robot-sheet {
+animation-duration: 0.8s;
+animation-timing-function: step(x);
+animation-iteration-count: infinite;
+animation-play-state: paused;
+}
+.walk-down .robot-sheet {
+  animation-name:walk-down;
+}
 
 /* YOUR CODE: Be kind to motion (at the very bottom) */
